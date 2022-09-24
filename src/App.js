@@ -6,8 +6,8 @@ import Searchbox from './components/Searchbox';
 function App() {
   return (
     <>
-      <Searchbox />
       <Createnote />
+      <Searchbox />
       <Notes />
     </>
   );

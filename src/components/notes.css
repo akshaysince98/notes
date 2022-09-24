@@ -1,0 +1,14 @@
+.cardheader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actions * {
+  margin: 2px;
+}
+
+.card {
+  margin: 10px;
+}

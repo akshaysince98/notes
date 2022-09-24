@@ -16,27 +16,16 @@ function Createnote() {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control
-                type="text"
-                placeholder="Title"
-                autoFocus
-              />
+              <Form.Control type="text" placeholder="Title" autoFocus />
             </Form.Group>
-            <Form.Group
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea1"
-            >
+            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Control as="textarea" rows={3} placeholder="Enter text here" />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          <Button variant="secondary" onClick={handleClose}>Close</Button>
+          <Button variant="primary" onClick={handleClose}>Save Changes</Button>
         </Modal.Footer>
       </Modal>
     </>

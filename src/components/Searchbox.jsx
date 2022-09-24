@@ -1,10 +1,12 @@
 import React from 'react'
+import { Form } from 'react-bootstrap'
 
 function Searchbox() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Form.Control type="text" placeholder="Title" autoFocus />
+
+    </>
   )
 }
 

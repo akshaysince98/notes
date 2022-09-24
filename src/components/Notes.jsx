@@ -1,10 +1,12 @@
 import React from 'react'
+import NoteSingle from './NoteSingle'
 
 function Notes() {
+
   return (
-    <div>
-      
-    </div>
+    <>
+      <NoteSingle/>
+    </>
   )
 }
 

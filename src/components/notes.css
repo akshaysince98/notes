@@ -13,10 +13,11 @@
 .card {
   margin: 10px;
 }
-.card *{
+
+.card * {
   overflow: hidden;
 }
 
-.titlebox{
+.titlebox {
   overflow: hidden;
 }

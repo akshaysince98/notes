@@ -10,8 +10,10 @@ function Createnote(props) {
   const handleShow = () => setShow(true);
 
   const setnotesObj = () => {
+
+    // sends states title and text to app.js function
+    
     setShow(false)
-    console.log("in createnote");
     props.createNewNote(title, text);
   }
 

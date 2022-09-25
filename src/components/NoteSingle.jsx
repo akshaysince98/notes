@@ -9,23 +9,26 @@ function NoteSingle(props) {
   const [ntitle, setNtitle] = useState(props.a.title)
   const [ntext, setNtext] = useState(props.a.text)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // functions to close modals
+  const handleShowClose = () => setShow(false);
   const handleAlertClose = () => setAlert(false);
+  const handleNoteClose = () => setShowNote(false);
+
+  // functions to open modals
+  const handleShow = () => setShow(true);
   const handleAlert = () => setAlert(true);
-  const handleCloseNote = () => setShowNote(false);
   const handleShowNote = () => setShowNote(true);
 
   const deleteN = () => {
     props.deleteNote(props.a.nid)
     handleAlertClose();
-    handleCloseNote();
+    handleNoteClose();
   }
 
   const editN = () => {
 
-    handleClose()
-    handleCloseNote()
+    handleShowClose()
+    handleNoteClose()
     props.editNote(props.a.nid, ntitle, ntext)
   }
 
@@ -49,7 +52,7 @@ function NoteSingle(props) {
       </Card>
 
       {/* Edit note modal */}
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleShowClose}>
         <Modal.Header>
           <Modal.Title>Edit Note</Modal.Title>
         </Modal.Header>
@@ -64,7 +67,7 @@ function NoteSingle(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>Close</Button>
+          <Button variant="secondary" onClick={handleShowClose}>Close</Button>
           <Button variant="primary" onClick={editN} >Save Changes</Button>
         </Modal.Footer>
       </Modal>
@@ -84,7 +87,7 @@ function NoteSingle(props) {
       </Modal>
 
       {/* show full note modal */}
-      <Modal show={showNote} onHide={handleCloseNote} >
+      <Modal show={showNote} onHide={handleNoteClose} >
         <Card>
           <Modal.Header>
             <Modal.Title>{props.a.title}</Modal.Title>
@@ -99,7 +102,7 @@ function NoteSingle(props) {
             <div className='actions'>
               <Button variant="danger" onClick={handleAlert} >Delete</Button>
               <Button variant="primary" onClick={handleShow} >Edit</Button>
-              <Button variant="primary" onClick={handleCloseNote}>Close</Button>
+              <Button variant="primary" onClick={handleNoteClose}>Close</Button>
             </div>
           </Modal.Footer>
         </Card>

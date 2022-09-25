@@ -4,6 +4,7 @@ import { Form } from 'react-bootstrap'
 function Searchbox(props) {
 
   const searching = (e) => {
+    // sends the searched value to app.js function
     let search = e.target.value
 
     props.searchNotes(search)

@@ -56,7 +56,7 @@ function App() {
   }
 
   const editNote = (id, title, text) => {
-    // looks for object in arr and changes the value first in arr and then calls savetostorage
+    // looks for object in arr and changes the value in arr and then calls savetostorage
     
     let narr = arr.slice();
     narr = narr.map((n, i) => {

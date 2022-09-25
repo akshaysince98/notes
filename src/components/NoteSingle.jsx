@@ -6,6 +6,8 @@ function NoteSingle(props) {
   const [show, setShow] = useState(false);
   const [showNote, setShowNote] = useState(false);
   const [alert, setAlert] = useState(false)
+  const [ntitle, setNtitle] = useState(props.a.title)
+  const [ntext, setNtext] = useState(props.a.text)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -13,6 +15,20 @@ function NoteSingle(props) {
   const handleAlert = () => setAlert(true);
   const handleCloseNote = () => setShowNote(false);
   const handleShowNote = () => setShowNote(true);
+
+  const deleteN = () => {
+    props.deleteNote(props.a.nid)
+    handleAlertClose();
+    handleCloseNote();
+  }
+
+  const editN = () => {
+
+    handleClose()
+    handleCloseNote()
+    props.editNote(props.a.nid, ntitle, ntext)
+  }
+
   return (
     <>
       <Card border="info" style={{ width: '250px', height: '250px' }} className="card" >
@@ -31,6 +47,7 @@ function NoteSingle(props) {
           </Card.Text>
         </Card.Body>
       </Card>
+
       {/* Edit note modal */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header>
@@ -39,18 +56,19 @@ function NoteSingle(props) {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control as="textarea" rows={1} placeholder="Title" />
+              <Form.Control as="textarea" rows={1} placeholder="Title" defaultValue={props.a.title} onChange={(e) => setNtitle(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Control as="textarea" rows={3} placeholder="Enter text here" />
+              <Form.Control as="textarea" rows={3} placeholder="Enter text here" defaultValue={props.a.text} onChange={(e) => setNtext(e.target.value)} />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
-          <Button variant="primary" onClick={handleClose}>Save Changes</Button>
+          <Button variant="primary" onClick={editN} >Save Changes</Button>
         </Modal.Footer>
       </Modal>
+
       {/* delete alert modal */}
       <Modal show={alert} onHide={handleAlertClose}>
         <Modal.Header>
@@ -61,7 +79,7 @@ function NoteSingle(props) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleAlertClose}>No</Button>
-          <Button variant="primary" onClick={handleAlertClose}>Yes</Button>
+          <Button variant="primary" onClick={deleteN}>Yes</Button>
         </Modal.Footer>
       </Modal>
 
@@ -79,7 +97,7 @@ function NoteSingle(props) {
           </Modal.Body>
           <Modal.Footer>
             <div className='actions'>
-              <Button variant="danger" onClick={handleAlert}>Delete</Button>
+              <Button variant="danger" onClick={handleAlert} >Delete</Button>
               <Button variant="primary" onClick={handleShow} >Edit</Button>
               <Button variant="primary" onClick={handleCloseNote}>Close</Button>
             </div>

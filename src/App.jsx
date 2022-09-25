@@ -43,6 +43,27 @@ function App() {
     setNid(nid + 1)
   }
 
+  const deleteNote = (id) => {
+    let narr = arr.slice();
+    narr = narr.filter((n, i) => n.nid != id)
+    setArr(narr)
+    saveToStorage(narr)
+  }
+
+  const editNote = (id, title, text) => {
+    let narr = arr.slice();
+    narr = narr.map((n, i) => {
+      if (n.nid == id) {
+        n.title = title
+        n.text = text
+      }
+      return n
+    })
+
+    setArr(narr)
+    saveToStorage(narr)
+  }
+
 
   return (
     <>
@@ -51,7 +72,7 @@ function App() {
         <Searchbox />
       </div>
       <div className='allnotes'>
-        {arr.map((a, i) => <NoteSingle key={i} a={a} />)}
+        {arr.map((a, i) => <NoteSingle key={i} a={a} deleteNote={deleteNote} editNote={editNote} />)}
 
       </div>
 

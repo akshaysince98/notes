@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Createnote from './components/Createnote';
 import Notes from './components/Notes';
 import Searchbox from './components/Searchbox';
 
 function App() {
-  // const [notes, setNotes] = useState({})
   const [arr, setArr] = useState([])
   const [nid, setNid] = useState(0)
 
@@ -15,9 +14,28 @@ function App() {
     let narr = arr.slice();
     narr.push(notes)
     setArr(narr)
+    let notesjson = JSON.stringify(narr)
+    localStorage.setItem("data", notesjson)
+    setNid(nid + 1)
   }
 
-  console.log(arr);
+  useEffect(() => {
+    let notesjson = localStorage.getItem("data");
+    if (!notesjson) {
+      return;
+    }
+    let resources = JSON.parse(notesjson)
+    setArr(resources)
+    let maxid = resources.reduce((pv, cv, ci, oarr) => {
+      // console.log(pv.nid)
+      let max = pv.nid
+      if (cv.nid > max) {
+        max = cv.nid
+      }
+      return max
+    })
+    setNid(maxid + 1)
+  }, [])
 
   return (
     <>

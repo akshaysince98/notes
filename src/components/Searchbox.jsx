@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap'
 function Searchbox() {
   return (
     <>
-      <Form.Control type="text" placeholder="Title" autoFocus />
+      <Form.Control type="text" placeholder="Type to search"  />
 
     </>
   )

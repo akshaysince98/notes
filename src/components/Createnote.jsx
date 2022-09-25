@@ -12,7 +12,7 @@ function Createnote(props) {
   const setnotesObj = () => {
     setShow(false)
     console.log("in createnote");
-    props.setnotesobj(title, text);
+    props.createNewNote(title, text);
   }
 
   return (
@@ -27,7 +27,7 @@ function Createnote(props) {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Control as="textarea" rows={1} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
+              <Form.Control as="textarea" rows={1} placeholder="Title" autoFocus onChange={(e) => setTitle(e.target.value)} />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Control as="textarea" rows={3} placeholder="Enter text here" onChange={(e) => setText(e.target.value)} />

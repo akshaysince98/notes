@@ -5,3 +5,9 @@
 .header * {
   margin: 10px;
 }
+
+.allnotes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
